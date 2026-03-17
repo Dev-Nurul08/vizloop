@@ -1,0 +1,22 @@
+{
+  "name": "vizloop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Interactive visual code-tracing engine and learning environment",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test --test-reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dev-Nurul08/vizloop.git"
+  },
+  "author": "Dev-Nurul <shaikhnurul8200@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^7.1.7"
+  }
+}
