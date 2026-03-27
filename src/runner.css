@@ -1,0 +1,38 @@
+/* ── Custom Code Editor & Modal Error ───────────────────────── */
+
+.source-editor {
+  display: block;
+  width: 100%;
+  min-height: 235px;
+  resize: vertical;
+  border: 1px solid #385171;
+  border-radius: 8px;
+  background: #091424;
+  color: #c9d8f0;
+  padding: 13px;
+  font: 12px/1.65 'DM Mono', monospace;
+  margin: 15px 0 4px;
+}
+
+.source-editor:focus {
+  outline: 1px solid #7698eb;
+}
+
+.editor-error {
+  min-height: 16px;
+  color: #ffaaa9;
+  font: 11px 'DM Mono', monospace;
+  margin: 5px 0 12px;
+}
+
+/* ── Array Layout & Language Indicators ─────────────────────── */
+
+.array-row {
+  max-width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.language-picker i.python {
+  background: #5da9e9;
+}
