@@ -226,9 +226,9 @@ body {
 /* ── Code Display ───────────────────────────────────────────── */
 
 .code-area {
-  padding: 22px 0;
+  padding: 18px 0;
   flex: 1;
-  font: 14px/2.25 'DM Mono';
+  font: 13.5px/1.8 'DM Mono', monospace;
   overflow: auto;
 }
 

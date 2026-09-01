@@ -145,19 +145,10 @@ function render() {
             <span class="save-state">● ${user ? 'Cloud-ready' : 'Guest mode'}</span>
           </div>
 
-          <div class="code-area">
-            ${lesson.code
-              .split('\n')
-              .map(
-                (text, i) => `
-                  <div class="code-line ${i + 1 === line ? 'focus' : ''}">
-                    <span class="line-no">${i + 1}</span>
-                    <code>${color(text)}</code>
-                  </div>
-                `
-              )
-              .join('')}
-          </div>
+          <div class="code-area">${lesson.code
+            .split('\n')
+            .map((text, i) => `<div class="code-line ${i + 1 === line ? 'focus' : ''}"><span class="line-no">${i + 1}</span><code>${color(text)}</code></div>`)
+            .join('')}</div>
 
           <footer class="progress">
             <div>
