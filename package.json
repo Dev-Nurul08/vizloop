@@ -4,11 +4,16 @@
   "private": true,
   "description": "Interactive visual code-tracing engine and learning environment",
   "type": "module",
+  "engines": {
+    "node": ">=22.16.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node --test --test-reporter spec"
+    "test": "node --test --test-reporter spec",
+    "audit": "npm audit --audit-level=moderate",
+    "verify": "npm run audit && npm test && npm run build"
   },
   "repository": {
     "type": "git",
@@ -18,5 +23,13 @@
   "license": "MIT",
   "devDependencies": {
     "vite": "^7.1.7"
+  },
+  "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
+    "lucide-react": "^1.39.0",
+    "monaco-editor": "^0.53.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "three": "^0.185.1"
   }
 }

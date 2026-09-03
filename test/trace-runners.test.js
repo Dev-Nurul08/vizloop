@@ -63,3 +63,26 @@ for i in range(len(scores)):
     if scores[i] > 5:
         total += scores[i]`), /finite numeric values/);
 });
+
+test('JavaScript runner traces a simple counter print loop', () => {
+  const trace = traceJavaScript(`for (let i = 1; i <= 10; i++) {
+  console.log(i);
+}`);
+
+  assert.equal(trace.at(0).action.type, 'LOOP_INIT');
+  assert.equal(trace.at(-1).action.type, 'PROGRAM_COMPLETE');
+  assert.deepEqual(trace.at(-1).action.value, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  assert.equal(trace.at(-1).state.variables.output.length, 10);
+  assertUniversalTraceProtocol(trace);
+});
+
+test('Python runner traces a simple range print loop', () => {
+  const trace = tracePython(`for i in range(1, 11):
+    print(i)`);
+
+  assert.equal(trace.at(0).action.type, 'LOOP_INIT');
+  assert.equal(trace.at(-1).action.type, 'PROGRAM_COMPLETE');
+  assert.deepEqual(trace.at(-1).action.value, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  assert.equal(trace.at(-1).state.variables.output.length, 10);
+  assertUniversalTraceProtocol(trace);
+});

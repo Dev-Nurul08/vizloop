@@ -2,91 +2,96 @@
 
 **Understand code as it runs.**
 
-VizLoop is an interactive code-tracing learning experience that allows learners to follow execution step-by-step in JavaScript and Python. It visualizes the active statement, real-time variable mutations, call stacks, and multi-mode data representations (Array, Control Flow, and Value Conveyor Metaphor).
+VizLoop is a React and Three.js learning environment for school and college students. Learners sign in, choose a concept from the Learning Hub, paste or load a supported program, and watch VizLoop turn code into a safe execution trace, 3D motion, algorithm, flowchart, mentor explanation, prediction quest, and final answer.
 
----
+## Main Features
 
-## Key Features
+- **Program analyzer**: Detects supported JavaScript and Python classroom programs without executing arbitrary code.
+- **3D execution view**: Shows counters, array values, conditions, and output as animated objects.
+- **Generated algorithm and flowchart**: Converts the trace into clear human-readable steps and a decision flow.
+- **Beginner and technical mentor modes**: Explains each statement in simple terms or as a precise state snapshot.
+- **Prediction quest**: Lets learners guess the next value before revealing the trace.
+- **Final answer panel**: Shows exactly what the program prints or computes and why.
+- **Guidebook modules**: Splash screen, auth/onboarding shell, Learning Hub, Skill Assessment, Learning Games, and profile/setup view.
+- **URL-driven navigation**: Hub concepts, games, assessment, and visualizer trace steps are deep-linkable with hash routes.
 
-- **Universal Trace Protocol (UTP)**: Normalized, language-agnostic trace specification powering the visualization engine.
-- **Multi-Language Trace Runners**: Safe, constrained AST-like pattern parsers for JavaScript and Python (no arbitrary execution).
-- **3 Visual Learning Modes**:
-  - **Array View**: Interactive cell blocks with active index indicators and qualification badges.
-  - **Flow View**: State machine diagram showing branching logic and accumulator updates.
-  - **Metaphor View**: Animated conveyor belt with threshold approval gates.
-- **Dual Mentor Modes**: Toggle between **ELI5** (intuitive beginner-friendly explanations) and **Technical** (precise statement snapshots).
-- **Gamified Learning**:
-  - **XP & Daily Streaks**: Gain XP for completing quests and accurate predictions.
-  - **Predict-Before-Reveal**: Challenge modals to test algorithmic intuition before seeing next-step state.
-- **Interactive Workspace**:
-  - Custom loop code editor with syntax highlighting and instant error diagnostics.
-  - Browser-local learner profiles with guest mode and snippet saving/restoration.
-  - Curriculum browser with quest milestones (Loops, Arrays, Searching, Sorting, Recursion).
+## Supported Starter Patterns
 
----
+- JavaScript and Python loops that print a counter, such as printing 1 to 10.
+- JavaScript and Python array accumulation loops with a numeric threshold condition, such as adding scores greater than 5.
+
+The runners are deliberately constrained for classroom safety. Unsupported code is rejected with guidance instead of being executed.
+
+## 10-Phase Workflow
+
+1. Code intake
+2. Format scan
+3. Concept detection
+4. Trace build
+5. 3D motion map
+6. Step mentor
+7. Algorithm draft
+8. Flowchart draft
+9. Prediction quest
+10. Final result
+
+## Guidebook Extension Modules
+
+- **Module A - Splash**: Lightweight block animation using the product's own array visual language, with a progress bar and skip behavior.
+- **Module B - Auth**: Demo-local signup/login/logout and onboarding flow, shaped for future Supabase/Auth.js/Clerk integration.
+- **Module C - Skill Assessment**: Versioned MCQ question bank, randomized display order, timed session, scoring, topic breakdown, history, and weak-topic routing.
+- **Module D - Learning Games**: Six practice games, with the first set playable through shared validation helpers.
+- **Module E - Learning Hub**: Single config-driven concept tree with search, concept details, subtopics, related concepts, progress states, and two-click navigation.
 
 ## Quick Start
 
-### Install Dependencies
 ```bash
 npm install
-```
-
-### Run Locally
-```bash
 npm run dev
 ```
 
-### Run Automated Tests
+Run the automated tests:
+
 ```bash
 npm test
 ```
 
-### Production Build
+Create a production build:
+
 ```bash
 npm run build
 ```
 
----
+## Architecture
 
-## Architecture & Universal Trace Protocol
-
-VizLoop is designed with clean architectural boundaries:
-
-```
+```text
 src/
-├── trace-protocol.js      # Universal Trace Protocol definitions & display transformers
-├── accumulation-trace.js  # Generic accumulation loop trace state machine
-├── js-runner.js           # JavaScript syntax validator & UTP emitter
-├── python-runner.js       # Python syntax validator & UTP emitter
-├── lesson-library.js      # Built-in curriculum templates (Loops, Arrays)
-├── main.js                # State management, UI rendering & user interactions
-├── style.css              # Design system & shell layout
-├── phase2.css             # Modals, dashboard, and snippet management
-├── phase3.css             # Multi-mode visualizers (Array, Flow, Metaphor)
-├── phase4.css             # Gamification (XP, streaks, skill cards)
-├── phase5.css             # Curriculum browser
-└── runner.css             # Custom code editor styles
+  App.jsx                React product shell and learning workflow
+  ExecutionScene.jsx     Three.js execution animation
+  product-content.js     Product strings, concept tree, question bank, games, env guide
+  assessment-engine.js   Assessment session, timing, answer, and scoring helpers
+  game-engine.js         Game validation helpers
+  progress-store.js      Demo-local profile/session/progress persistence
+  routing.js             Hash-route parse/build helpers
+  program-analysis.js    Lesson builder, workflow phases, reports, samples
+  trace-protocol.js      Universal Trace Protocol helpers
+  accumulation-trace.js  Array accumulator trace state machine
+  counting-trace.js      Counter loop trace state machine
+  js-runner.js           JavaScript pattern analyzer
+  python-runner.js       Python pattern analyzer
+  lesson-library.js      Legacy lesson templates used by tests
+  style.css              Responsive product styling
+test/
+  trace-runners.test.js
+  guidebook-modules.test.js
+  lesson-library.test.js
+  program-analysis.test.js
 ```
 
----
+## Notes
 
-## 11-Phase Project Roadmap
-
-1. **Phase 1 (Mar 17)**: Project scaffold & Vite build pipeline
-2. **Phase 2 (Mar 18)**: Universal Trace Protocol (UTP) specification
-3. **Phase 3 (Mar 19)**: Accumulation trace engine & state tracking
-4. **Phase 4 (Mar 20)**: JavaScript & Python language runners
-5. **Phase 5 (Mar 21)**: Interactive lesson library & templates
-6. **Phase 6 (Mar 22)**: UI shell, code editor panel & live syntax highlighter
-7. **Phase 7 (Mar 24)**: Execution visualizer (Array, Flow, Metaphor modes)
-8. **Phase 8 (Mar 25)**: Learner profile, local dashboard & snippet management
-9. **Phase 9 (Mar 26)**: Gamification system (XP, streaks, predict-before-reveal)
-10. **Phase 10 (Mar 27)**: Curriculum browser & quest progression
-11. **Phase 11 (Mar 28)**: Complete test suite & project documentation
-
----
+VizLoop is currently a frontend MVP with local browser storage for demo profile/session state, XP, progress, assessment attempts, and game outcomes. The UI and environment plan are prepared for a managed backend, but production auth, httpOnly cookies, Postgres persistence, server-side assessment scoring, and sandbox execution require provider accounts and secrets.
 
 ## License
 
-MIT © Dev-Nurul
+MIT

@@ -16,7 +16,7 @@ export function buildAccumulationTrace({ lines, arrayLine, totalLine, loopLine, 
     const first = index === initialIndex;
     add(loopLine, state(index), index, { type: first ? 'LOOP_INIT' : 'LOOP_ITERATE', target: indexName, value: index, changed: indexName, explanation: first ? `The loop begins at the first ${itemName}.` : 'Move to the next item.' });
     const passes = values[index] > threshold;
-    add(ifLine, state(index), index, { type: 'CONDITION_EVALUATE', target: `${values[index]} > ${threshold}`, threshold, result: passes, explanation: passes ? `${values[index]} is greater than ${threshold} — this value qualifies.` : `${values[index]} is not greater than ${threshold}, so we skip it.` });
+    add(ifLine, state(index), index, { type: 'CONDITION_EVALUATE', target: `${values[index]} > ${threshold}`, threshold, result: passes, explanation: passes ? `${values[index]} is greater than ${threshold} - this value qualifies.` : `${values[index]} is not greater than ${threshold}, so we skip it.` });
     if (passes) { total += values[index]; add(updateLine, state(index), index, { type: 'VARIABLE_UPDATE', target: totalName, value: total, changed: totalName, explanation: `Add ${values[index]} to our ${totalName}.` }); }
   }
   if (outputLine >= 0) add(outputLine, state(values.length), null, { type: 'OUTPUT', target: totalName, value: total, explanation: `The final ${totalName} is ${total}. Nice work tracing!` });
