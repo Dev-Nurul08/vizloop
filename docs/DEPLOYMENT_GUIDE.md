@@ -52,15 +52,16 @@ git push origin main
 ### Step 3: Configure Environment Variables
 In the Vercel Project Setup screen (or under **Settings -> Environment Variables**), add the following environment variables:
 
-| Variable Name | Type | Value / Purpose |
+| Variable Name | Type | Configured Value for Your Project (`yzuhhjxzgdjvawqacopg`) |
 | :--- | :--- | :--- |
-| `VITE_SUPABASE_URL` | Client | `https://your-project.supabase.co` |
-| `VITE_SUPABASE_ANON_KEY` | Client | `public-anon-key-for-browser` |
-| `SUPABASE_SERVICE_ROLE_KEY` | Server-Only | `server-only-service-role-key` |
-| `DATABASE_URL` | Server-Only | `postgresql://user:password@host:5432/vizloop` |
-| `SANDBOX_API_KEY` | Server-Only | `server-only-sandbox-key` (Optional) |
-| `POSTHOG_KEY` | Client | `public-product-analytics-key` (Optional) |
-| `SENTRY_DSN` | Client/Server | `error-monitoring-dsn` (Optional) |
+| `VITE_SUPABASE_URL` | Client | `https://yzuhhjxzgdjvawqacopg.supabase.co` |
+| `VITE_SUPABASE_ANON_KEY` | Client | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl6dWhoanh6Z2RqdmF3cWFjb3BnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkwNTYxODcsImV4cCI6MjEwNDYzMjE4N30.8iqXG9jzdwi_Z3d3V2VvDoXiFjQpUToxEQIN4h2xULA` |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server-Only | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl6dWhoanh6Z2RqdmF3cWFjb3BnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4OTA1NjE4NywiZXhwIjoyMTA0NjMyMTg3fQ.PwmrGEYVSsxXQCAMRjOmdPblJgUMKzfPAeAHbTNaPt0` |
+| `DATABASE_URL` | Server-Only | `postgresql://postgres:[YOUR-DATABASE-PASSWORD]@db.yzuhhjxzgdjvawqacopg.supabase.co:5432/postgres` |
+| `SANDBOX_API_KEY` | Server-Only | *(Optional - leave blank for default AST runners)* |
+| `POSTHOG_KEY` | Client | *(Optional - leave blank for now)* |
+| `SENTRY_DSN` | Client/Server | *(Optional - leave blank for now)* |
+
 
 #### Where to get each credential (Step-by-Step)
 
