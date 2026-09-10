@@ -58,9 +58,33 @@ In the Vercel Project Setup screen (or under **Settings -> Environment Variables
 | `VITE_SUPABASE_ANON_KEY` | Client | `public-anon-key-for-browser` |
 | `SUPABASE_SERVICE_ROLE_KEY` | Server-Only | `server-only-service-role-key` |
 | `DATABASE_URL` | Server-Only | `postgresql://user:password@host:5432/vizloop` |
-| `SANDBOX_API_KEY` | Server-Only | `server-only-sandbox-key` |
-| `POSTHOG_KEY` | Client | `public-product-analytics-key` |
-| `SENTRY_DSN` | Client/Server | `error-monitoring-dsn` |
+| `SANDBOX_API_KEY` | Server-Only | `server-only-sandbox-key` (Optional) |
+| `POSTHOG_KEY` | Client | `public-product-analytics-key` (Optional) |
+| `SENTRY_DSN` | Client/Server | `error-monitoring-dsn` (Optional) |
+
+#### Where to get each credential (Step-by-Step)
+
+##### 1. Supabase Credentials (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `DATABASE_URL`)
+1. Create a free account at [Supabase.com](https://supabase.com).
+2. Click **"New Project"**, name it `vizloop`, set a secure database password, and choose your preferred region.
+3. Once your project is created:
+   - Go to **Project Settings** (gear icon) -> **API**.
+   - Copy **Project URL** -> `VITE_SUPABASE_URL` (e.g. `https://abcdefgh.supabase.co`).
+   - Copy **`anon` `public` key** -> `VITE_SUPABASE_ANON_KEY`.
+   - Copy **`service_role` `secret` key** -> `SUPABASE_SERVICE_ROLE_KEY`.
+4. Go to **Project Settings** -> **Database**:
+   - Under **Connection string**, select **URI**.
+   - Copy the string -> `DATABASE_URL` (replace `[YOUR-PASSWORD]` with your project database password).
+
+##### 2. Sandbox API Key (`SANDBOX_API_KEY` - Optional)
+- VizLoop already comes with **built-in browser & server AST pattern runners** for JavaScript and Python loops/arrays.
+- You can leave `SANDBOX_API_KEY` blank or unconfigured unless you connect an external multi-language sandbox server (like Judge0).
+
+##### 3. Analytics & Error Monitoring (`POSTHOG_KEY`, `SENTRY_DSN` - Optional)
+- **PostHog**: Sign up at [PostHog.com](https://posthog.com) (free) -> Settings -> Project API Key.
+- **Sentry**: Sign up at [Sentry.io](https://sentry.io) (free) -> Settings -> Client Keys (DSN).
+- You can leave both blank if you don't need analytics or error tracking initially.
+
 
 ### Step 4: Deploy
 Click **"Deploy"**. Vercel will:
